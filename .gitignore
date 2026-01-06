@@ -1,0 +1,29 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Docker
+*.tar
+
+# Optional: model artifacts (uncomment if you don't want to track them)
+# model/model.pkl
