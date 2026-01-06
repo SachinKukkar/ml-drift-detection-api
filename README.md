@@ -1,86 +1,89 @@
-🚀 ML Drift Detection API
+# 🚀 ML Drift Detection API
 
 An end-to-end Machine Learning inference service with real-time data drift detection, built using FastAPI and Evidently AI, and fully containerized with Docker.
 
 This project demonstrates how to deploy an ML model as a production-ready API while continuously monitoring incoming data for distribution shifts (data drift)—a critical requirement for reliable real-world ML systems.
 
-📌 Overview
+---
+
+## 📌 Overview
 
 In real production environments, model performance can degrade over time due to changes in incoming data. This project solves that problem by:
 
-Serving predictions through a REST API
-
-Continuously comparing live input data with training data
-
-Detecting and reporting data drift in real time
+- Serving predictions through a REST API
+- Continuously comparing live input data with training data
+- Detecting and reporting data drift in real time
 
 Along with predictions, the API returns drift metrics, enabling proactive monitoring and maintenance of ML models.
 
-✨ Key Features
+---
 
-🔹 Machine learning model training & inference
+## ✨ Key Features
 
-🔹 RESTful API using FastAPI
+- 🔹 Machine learning model training & inference
+- 🔹 RESTful API using FastAPI
+- 🔹 Automated data drift detection using Evidently
+- 🔹 Modular and scalable project structure
+- 🔹 Fully Dockerized for reproducible deployment
 
-🔹 Automated data drift detection using Evidently
+---
 
-🔹 Modular and scalable project structure
+## 🧠 Tech Stack
 
-🔹 Fully Dockerized for reproducible deployment
+- **Python** - Core programming language
+- **scikit-learn** - Model training and inference
+- **FastAPI** - Web framework for building APIs
+- **Evidently AI** - Data drift detection
+- **Docker** - Containerization
 
-🧠 Tech Stack
+---
 
-Python
-
-scikit-learn
-
-FastAPI
-
-Evidently AI
-
-Docker
-
-📁 Project Structure
+## 📁 Project Structure
+```
 ml-drift-detection-api/
 │
-├── app/            # FastAPI application (API routes & schemas)
-├── data/           # Reference training data
-├── model/          # Model training & saved artifacts
-├── drift/          # Data drift detection logic
+├── app/                # FastAPI application (API routes & schemas)
+├── data/               # Reference training data
+├── model/              # Model training & saved artifacts
+├── drift/              # Data drift detection logic
 │
 ├── Dockerfile
 ├── requirements.txt
 ├── README.md
 └── .gitignore
+```
 
-⚙️ How It Works
+---
 
-A RandomForest classifier is trained on a structured tabular dataset.
+## ⚙️ How It Works
 
-The training dataset is saved as reference data for drift detection.
+1. A **RandomForest classifier** is trained on a structured tabular dataset
+2. The training dataset is saved as **reference data** for drift detection
+3. Incoming API requests are passed to the trained model for **prediction**
+4. Input data is compared against reference data using **Evidently**
+5. The API returns:
+   - Model prediction
+   - Drift detection status
+   - Drift score
 
-Incoming API requests are passed to the trained model for prediction.
+---
 
-Input data is compared against reference data using Evidently.
+## 🔌 API Usage
 
-The API returns:
-
-Model prediction
-
-Drift detection status
-
-Drift score
-
-🔌 API Usage
-Endpoint
+### Endpoint
+```
 POST /predict
+```
 
-Example Request
+### Example Request
+```json
 {
   "features": [30 numerical feature values]
 }
+```
 
-Example Response
+### Example Response
+```json
 {
   "prediction": 0,
   "drift": {
@@ -88,51 +91,70 @@ Example Response
     "drift_score": 0.0
   }
 }
+```
 
-🧪 Run Locally
-1️⃣ Create & activate a virtual environment
+---
+
+## 🧪 Run Locally
+
+### 1️⃣ Create & activate a virtual environment
+```bash
 python -m venv venv
-source venv/bin/activate
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
 
-2️⃣ Install dependencies
+### 2️⃣ Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
-3️⃣ Start the API server
+### 3️⃣ Start the API server
+```bash
 uvicorn app.main:app --reload
+```
 
-4️⃣ Open Swagger UI
-http://127.0.0.1:8000/docs
+### 4️⃣ Open Swagger UI
 
-🐳 Run with Docker
-Build the Docker image
+Visit: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+
+---
+
+## 🐳 Run with Docker
+
+### Build the Docker image
+```bash
 docker build -t ml-drift-api .
+```
 
-Run the container
+### Run the container
+```bash
 docker run -p 8000:8000 ml-drift-api
+```
 
-Access the API
-http://localhost:8000/docs
+### Access the API
 
-🎯 Use Cases
+Visit: [http://localhost:8000/docs](http://localhost:8000/docs)
 
-Monitoring ML models in production
+---
 
-Detecting data distribution shifts
+## 🎯 Use Cases
 
-Building reliable MLOps pipelines
+- Monitoring ML models in production
+- Detecting data distribution shifts
+- Building reliable MLOps pipelines
+- Learning production-grade ML deployment
 
-Learning production-grade ML deployment
+---
 
-📌 Future Improvements
+## 📌 Future Improvements
 
-Add model performance monitoring
+- [ ] Add model performance monitoring
+- [ ] Store drift metrics in a database
+- [ ] Add alerting (Slack / Email)
+- [ ] Support batch predictions
 
-Store drift metrics in a database
+.
 
-Add alerting (Slack / Email)
+---
 
-Support batch predictions
-
-📄 License
-
-This project is open-source and intended for learning, experimentation, and production demos.
+**Made with ❤️ for the ML community**
